@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📅 Tu Día a Día - Sistema Completo</title>
+    <style>
+        :root {
+            --primary: #d4af37;
+            --bg: #121212;
+            --text: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        .nav-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #f1c40f;
+            margin-top: 30px;
+            border-left: 5px solid #f1c40f;
+            padding-left: 10px;
+        }
+
+        .time-block {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .time-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .time-badge {
+            background: var(--primary);
+            color: #000;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .time-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .duration {
+            background: #333;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: auto;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li {
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .track-tag {
+            background: var(--success);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .track-tag.gym {
+            background: #3498db;
+        }
+
+        .track-tag.food {
+            background: #e74c3c;
+        }
+
+        .track-tag.habit {
+            background: #9b59b6;
+        }
+
+        .note {
+            background-color: #2c2c2c;
+            border-left: 5px solid var(--warning);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip {
+            background-color: #0f2c15;
+            border-left: 5px solid var(--success);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tracking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tracking-table th,
+        .tracking-table td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .tracking-table th {
+            background: #333;
+            color: var(--primary);
+        }
+
+        .app-badge {
+            background: #1a1a2e;
+            border: 1px solid #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .day-cell {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .day-cell.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .day-name {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .workout-type {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 600px) {
+            .weekly-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .time-header {
+                flex-wrap: wrap;
+            }
+
+            .duration {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="nav-btn">← Volver al Dashboard</a>
+
+    <h1>📅 Tu Día a Día - Sistema Completo</h1>
+
+    <div class="note">
+        <strong>🎯 OBJETIVO:</strong> Que sepas EXACTAMENTE qué hacer cada minuto del día y qué debes registrar.<br>
+        <strong>📱 APPS:</strong> SnapCalorie (comida) | Hevy (gym) | Loop Habit Tracker (hábitos)
+    </div>
+
+    <!-- RESUMEN SEMANAL -->
+    <h2>📆 Tu Semana de Entrenamiento</h2>
+
+    <div class="weekly-grid">
+        <div class="day-cell active">
+            <div class="day-name">LUN</div>
+            <div class="workout-type">PUSH</div>
+        </div>
+        <div class="day-cell active">
+            <div class="day-name">MAR</div>
+            <div class="workout-type">PULL</div>
+        </div>
+        <div class="day-cell active">
+            <div class="day-name">MIÉ</div>
+            <div class="workout-type">LEGS</div>
+        </div>
+        <div class="day-cell active">
+            <div class="day-name">JUE</div>
+            <div class="workout-type">UPPER B</div>
+        </div>
+        <div class="day-cell active">
+            <div class="day-name">VIE</div>
+            <div class="workout-type">LEGS B</div>
+        </div>
+        <div class="day-cell">
+            <div class="day-name">SÁB</div>
+            <div class="workout-type">Descanso</div>
+        </div>
+        <div class="day-cell">
+            <div class="day-name">DOM</div>
+            <div class="workout-type">Batch Cook</div>
+        </div>
+    </div>
+
+    <!-- RUTINA MAÑANA -->
+    <h2>🌅 MAÑANA (6:00 - 9:00 AM)</h2>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">6:00 AM</span>
+            <span class="time-title">Despertar + Ritual Matutino</span>
+            <span class="duration">⏱️ 15 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Pesarse</strong> (antes de comer/beber)
+                    <span class="track-tag">ANOTAR</span>
+                    <br><small>📱 App: Happy Scale/Libra → Registrar peso</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>30 Kegels</strong> (en la cama, antes de levantarse)
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Contrae 3 seg, relaja 3 seg. 30 veces.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Vacuum Abdominal</strong> - 4 series de 30 seg
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>En ayunas es más efectivo. Mete el ombligo hacia adentro.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Hielo en la cara</strong> - 2 minutos
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Desinflama ojeras, cierra poros. Truco de modelos.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">6:20 AM</span>
+            <span class="time-title">Desayuno (Batido Masa)</span>
+            <span class="duration">⏱️ 10 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Preparar batido:</strong>
+                    <br>• 500ml leche + 100g avena + 2 cambures + 2 cdas azúcar
+                    <span class="track-tag food">FOTO→MACROS</span>
+                    <br><small>📱 SnapCalorie: Foto del batido → Guarda los macros</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Tomar Creatina</strong> - 5g
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Mezclar con el batido o con agua.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- MAÑANA TRABAJO -->
+    <h2>☀️ MAÑANA/TRABAJO (9:00 AM - 12:00 PM)</h2>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">9:00 AM</span>
+            <span class="time-title">Comida 2: Huevos + Arepas</span>
+            <span class="duration">⏱️ 15 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>4-5 Huevos + 2 Arepas + Queso</strong>
+                    <span class="track-tag food">FOTO→MACROS</span>
+                    <br><small>📱 SnapCalorie: Foto antes de comer</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Mastic Gum</strong> - 15 minutos después de comer
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Masticar chicle duro para maseteros (mandíbula).</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- MEDIODÍA -->
+    <h2>🍽️ MEDIODÍA (12:00 - 3:00 PM)</h2>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">12:30 PM</span>
+            <span class="time-title">Almuerzo (Pabellón Constructor)</span>
+            <span class="duration">⏱️ 20 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Arroz + Caraotas + Plátano + Pollo</strong>
+                    <span class="track-tag food">FOTO→MACROS</span>
+                    <br><small>📱 SnapCalorie: Foto del tupper antes de comer</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>30 Kegels</strong> (segunda sesión)
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Puedes hacerlo sentado en cualquier lugar, nadie nota.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- TARDE -->
+    <h2>🏋️ TARDE (3:00 - 8:00 PM)</h2>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">4:00 PM</span>
+            <span class="time-title">Pre-Entreno (Yuca + Huevos)</span>
+            <span class="duration">⏱️ 15 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>300g Yuca + 3 Huevos duros + 1 Cambur</strong>
+                    <span class="track-tag food">FOTO→MACROS</span>
+                    <br><small>Comer 1-2 horas antes del gym.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="time-block" style="border-color: var(--primary); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);">
+        <div class="time-header">
+            <span class="time-badge" style="background: var(--danger);">5:30 PM</span>
+            <span class="time-title">🏋️ ENTRENAMIENTO (Según día)</span>
+            <span class="duration">⏱️ 60-75 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Abrir Hevy → Seleccionar rutina del día</strong>
+                    <span class="track-tag gym">APP GYM</span>
+                    <br><small>Lun=Push, Mar=Pull, Mié=Legs, Jue=Upper B, Vie=Legs B</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>CADA SET: Anotar Peso × Reps</strong>
+                    <span class="track-tag gym">ANOTAR</span>
+                    <br><small>📱 Hevy: Registra cada set al terminar. NO al final del gym.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Comparar con sesión anterior</strong>
+                    <span class="track-tag gym">REVISAR</span>
+                    <br><small>Hevy te muestra qué hiciste antes. SUPÉRALO.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Al terminar: Vacuum 3×30 seg</strong>
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Hazlo en el gym antes de irte. Cintura pequeña.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- NOCHE -->
+    <h2>🌙 NOCHE (8:00 - 11:00 PM)</h2>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">8:00 PM</span>
+            <span class="time-title">Cena Post-Entreno</span>
+            <span class="duration">⏱️ 30 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>200g Pollo + 250g Arroz + Vegetales</strong>
+                    <span class="track-tag food">FOTO→MACROS</span>
+                    <br><small>📱 SnapCalorie: Última foto del día</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Revisar macros totales del día</strong>
+                    <span class="track-tag food">REVISAR</span>
+                    <br><small>¿Llegaste a ~3000 kcal y ~120g proteína?</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="time-block">
+        <div class="time-header">
+            <span class="time-badge">10:00 PM</span>
+            <span class="time-title">Ritual Nocturno</span>
+            <span class="duration">⏱️ 15 min</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Skincare nocturno</strong> (Limpieza + Hidratante)
+                    <span class="track-tag habit">HÁBITO</span>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>30 Kegels</strong> (tercera y última sesión)
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>90 Kegels totales al día = Control total.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Mewing antes de dormir</strong>
+                    <span class="track-tag habit">HÁBITO</span>
+                    <br><small>Lengua pegada al paladar como postura de sueño.</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- QUÉ ANOTAR -->
+    <h2>📊 Lo Que DEBES Anotar Cada Día</h2>
+
+    <table class="tracking-table">
+        <tr>
+            <th>Dato</th>
+            <th>Cuándo</th>
+            <th>Dónde</th>
+            <th>Por qué</th>
+        </tr>
+        <tr>
+            <td><strong>Peso corporal</strong></td>
+            <td>6:00 AM (ayunas)</td>
+            <td><span class="app-badge">Happy Scale/Libra</span></td>
+            <td>Ver tendencia semanal, no diaria</td>
+        </tr>
+        <tr>
+            <td><strong>Cada comida</strong></td>
+            <td>Antes de comer</td>
+            <td><span class="app-badge">SnapCalorie</span></td>
+            <td>Foto → Macros automáticos</td>
+        </tr>
+        <tr>
+            <td><strong>Cada set del gym</strong></td>
+            <td>Al terminar el set</td>
+            <td><span class="app-badge">Hevy</span></td>
+            <td>Peso × Reps. Para progresar.</td>
+        </tr>
+        <tr>
+            <td><strong>Hábitos diarios</strong></td>
+            <td>Cuando los hagas</td>
+            <td><span class="app-badge">Loop Habit</span></td>
+            <td>Kegels, Vacuum, Skincare, Mastic</td>
+        </tr>
+        <tr>
+            <td><strong>Foto de progreso</strong></td>
+            <td>Domingo AM</td>
+            <td><span class="app-badge">Progress App</span></td>
+            <td>Ver cambios que no notas</td>
+        </tr>
+    </table>
+
+    <!-- DOMINGO ESPECIAL -->
+    <h2>📅 DOMINGO: Día Especial</h2>
+
+    <div class="time-block"
+        style="background: linear-gradient(135deg, #1a2c1a 0%, #0f2c15 100%); border-color: var(--success);">
+        <div class="time-header">
+            <span class="time-badge" style="background: var(--success);">DOMINGO</span>
+            <span class="time-title">Batch Cooking + Análisis Semanal</span>
+            <span class="duration">⏱️ 3 horas</span>
+        </div>
+        <ul class="checklist">
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Foto de progreso</strong> (mismo lugar, misma luz)
+                    <span class="track-tag">ANOTAR</span>
+                    <br><small>Frontal relajado, frontal contraído, lateral, espalda.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Comparar peso promedio semanal</strong>
+                    <span class="track-tag">ANALIZAR</span>
+                    <br><small>¿Subiste ~0.3-0.5kg? Si no, añade calorías.</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Revisar progreso en Hevy</strong>
+                    <span class="track-tag gym">ANALIZAR</span>
+                    <br><small>¿Subiste peso o reps en algún ejercicio?</small>
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Batch Cooking (2 horas)</strong>
+                    <br>• 2kg arroz | 1kg caraotas | 2kg pollo | 2kg yuca | 20 huevos duros | 10 plátanos
+                </div>
+            </li>
+            <li>
+                <span class="checkbox"></span>
+                <div>
+                    <strong>Armar 10-12 tuppers para la semana</strong>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- CHECKLIST APPS -->
+    <h2>📱 Setup de Apps (Una vez)</h2>
+
+    <div class="tip">
+        <h3 style="color: var(--success); margin-top: 0;">Configuración Inicial</h3>
+        <ul style="margin: 0;">
+            <li><strong>SnapCalorie:</strong> Descargar → Crear cuenta → Listo para fotos</li>
+            <li><strong>Hevy:</strong> Descargar → Crear 5 rutinas (Push, Pull, Legs, Upper B, Legs B) → Añadir
+                ejercicios</li>
+            <li><strong>Happy Scale/Libra:</strong> Descargar → Poner meta: 80kg</li>
+            <li><strong>Loop Habit Tracker:</strong> Crear hábitos: Kegels AM, Kegels PM, Kegels Noche, Vacuum,
+                Skincare, Mastic Gum</li>
+        </ul>
+    </div>
+
+    <!-- RESUMEN VISUAL -->
+    <h2>📋 Resumen: Tu Día en 1 Minuto</h2>
+
+    <div class="note" style="border-color: var(--primary);">
+        <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🌅 <strong>6:00 AM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">Peso + Kegels + Vacuum + Hielo</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🥤 <strong>6:20 AM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">Batido + Creatina [FOTO]</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🍳 <strong>9:00 AM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">Huevos + Arepas + Mastic Gum [FOTO]</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🍚 <strong>12:30 PM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">Almuerzo + Kegels [FOTO]</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🥔 <strong>4:00 PM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">Pre-entreno [FOTO]</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🏋️ <strong>5:30 PM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">GYM [Hevy: cada set]</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">🍗 <strong>8:00 PM</strong></td>
+                <td style="padding: 10px; border-bottom: 1px solid #333;">Cena [FOTO] + Revisar macros</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px;">🌙 <strong>10:00 PM</strong></td>
+                <td style="padding: 10px;">Skincare + Kegels + Mewing → Dormir</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="tip" style="margin-top: 30px;">
+        <h3 style="margin-top: 0;">💪 RECUERDA</h3>
+        <p style="margin-bottom: 0;">
+            <strong>Lo que no se mide, no se mejora.</strong><br>
+            5 fotos de comida + 1 sesión de gym registrada = Tu día está completo.<br>
+            Si lo haces consistentemente por 12 semanas, serás OTRA persona.
+        </p>
+    </div>
+
+</body>
+
+</html>

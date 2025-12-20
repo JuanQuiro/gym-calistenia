@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Nutricional: Venezuela Económico (3000 kcal)</title>
+    <style>
+        :root {
+            --primary: #d4af37;
+            --bg: #121212;
+            --text: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        .nav-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .phase-badge {
+            background: #d4af37;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .economy-badge {
+            background: var(--success);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        h2 {
+            color: #f1c40f;
+            margin-top: 30px;
+            border-left: 4px solid #f1c40f;
+            padding-left: 10px;
+        }
+
+        .note {
+            background-color: #2c2c2c;
+            border-left: 5px solid #f1c40f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip {
+            background-color: #0f2c15;
+            border-left: 5px solid #2ecc71;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .economy-tip {
+            background-color: #1a2c1a;
+            border: 2px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--card-bg);
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333;
+            color: var(--primary);
+        }
+
+        tr:nth-child(even) {
+            background-color: #252525;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .food-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .food-card.best {
+            border-color: var(--success);
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.2);
+        }
+
+        .food-emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .price-tag {
+            background: var(--success);
+            color: #000;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .prep-time {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .meal-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .meal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .meal-time {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .meal-prep {
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .macros-row {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .macro {
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .shopping-list {
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .shopping-list li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .shopping-list {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="nav-btn">← Volver al Dashboard</a>
+
+    <br>
+    <span class="phase-badge">FASE 1: MESES 1-3</span>
+    <span class="economy-badge">💰 VERSIÓN ECONÓMICA VENEZUELA</span>
+
+    <h1>🇻🇪 Plan Nutricional: 3000 kcal Económico</h1>
+
+    <div class="note">
+        <strong>🎯 Objetivo:</strong> 50kg → 60kg en 3 meses<br>
+        <strong>💡 Filosofía:</strong> Máximo resultado con mínimo presupuesto. Alimentos locales, fáciles y
+        rápidos.<br>
+        <strong>📊 Macros Óptimos:</strong> Proteína 1.8g/kg (117g) | Carbos 458g | Grasas 78g
+    </div>
+
+    <!-- SUPER ALIMENTOS ECONÓMICOS -->
+    <h2>1. 🏆 Los 7 Campeones Venezolanos (Costo-Beneficio)</h2>
+    <p>Estos alimentos dan MÁXIMO músculo por cada bolívar gastado:</p>
+
+    <div class="food-grid">
+        <div class="food-card best">
+            <span class="food-emoji">🥚</span>
+            <strong>HUEVOS</strong><br>
+            <span class="price-tag">⭐ REY ABSOLUTO</span><br>
+            <small>7g proteína c/u<br>El más barato del mundo</small>
+        </div>
+        <div class="food-card best">
+            <span class="food-emoji">🍌</span>
+            <strong>PLÁTANO/CAMBUR</strong><br>
+            <span class="price-tag">⭐ CARBOHIDRATO #1</span><br>
+            <small>Energía instantánea<br>Cero preparación</small>
+        </div>
+        <div class="food-card best">
+            <span class="food-emoji">🍚</span>
+            <strong>ARROZ</strong><br>
+            <span class="price-tag">💰 ULTRA ECONÓMICO</span><br>
+            <small>130 kcal/100g cocido<br>Rinde muchísimo</small>
+        </div>
+        <div class="food-card">
+            <span class="food-emoji">🥔</span>
+            <strong>YUCA / PAPA</strong><br>
+            <span class="price-tag">💰 LOCAL</span><br>
+            <small>Carbohidrato limpio<br>Muy barato en mercado</small>
+        </div>
+        <div class="food-card">
+            <span class="food-emoji">🫘</span>
+            <strong>CARAOTAS/LENTEJAS</strong><br>
+            <span class="price-tag">💰 PROTEÍNA VEGETAL</span><br>
+            <small>Proteína + Carbos<br>Muy económico</small>
+        </div>
+        <div class="food-card">
+            <span class="food-emoji">🧀</span>
+            <strong>QUESO BLANCO</strong><br>
+            <span class="price-tag">💰 CALÓRICO</span><br>
+            <small>Proteína + Grasa<br>Llanero es más barato</small>
+        </div>
+        <div class="food-card">
+            <span class="food-emoji">🍗</span>
+            <strong>POLLO (MUSLO)</strong><br>
+            <span class="price-tag">💰 PROTEÍNA ANIMAL</span><br>
+            <small>Más barato que pechuga<br>Más jugoso al recalentar</small>
+        </div>
+    </div>
+
+    <!-- LISTA DE COMPRAS SEMANAL -->
+    <h2>2. 🛒 Lista de Compras Semanal (El Mercado)</h2>
+
+    <div class="economy-tip">
+        <strong>💡 TRUCO PRO:</strong> Compra en el mercado municipal, NO en supermercado.
+        Ahorro del 30-50% en vegetales, frutas y tubérculos.
+    </div>
+
+    <table>
+        <tr>
+            <th>Alimento</th>
+            <th>Cantidad Semanal</th>
+            <th>Por qué</th>
+        </tr>
+        <tr>
+            <td><strong>🥚 Huevos</strong></td>
+            <td>2-3 Cartones (60-90 huevos)</td>
+            <td>Tu proteína principal. Comes ~10-12 diarios.</td>
+        </tr>
+        <tr>
+            <td><strong>🍚 Arroz</strong></td>
+            <td>3-4 kg</td>
+            <td>Base de carbohidratos. Compra saco grande.</td>
+        </tr>
+        <tr>
+            <td><strong>🍌 Plátanos/Cambures</strong></td>
+            <td>3 manos (~30 unidades)</td>
+            <td>Verde para cocinar, maduro para comer.</td>
+        </tr>
+        <tr>
+            <td><strong>🥔 Yuca o Papas</strong></td>
+            <td>3-4 kg</td>
+            <td>Carbohidrato alterno al arroz.</td>
+        </tr>
+        <tr>
+            <td><strong>🫘 Caraotas/Lentejas</strong></td>
+            <td>1 kg</td>
+            <td>Proteína vegetal barata. Combina con arroz.</td>
+        </tr>
+        <tr>
+            <td><strong>🍗 Pollo (Muslo)</strong></td>
+            <td>2 kg</td>
+            <td>Proteína animal. Más barato que pechuga.</td>
+        </tr>
+        <tr>
+            <td><strong>🧀 Queso Blanco</strong></td>
+            <td>500g - 1kg</td>
+            <td>Calorías + proteína. Llanero/duro es más barato.</td>
+        </tr>
+        <tr>
+            <td><strong>🥛 Leche</strong></td>
+            <td>4-6 litros</td>
+            <td>Calorías líquidas fáciles.</td>
+        </tr>
+        <tr>
+            <td><strong>🌿 Aceite</strong></td>
+            <td>1 litro</td>
+            <td>Calorías para cocinar y añadir.</td>
+        </tr>
+        <tr>
+            <td><strong>🥕 Vegetales Baratos</strong></td>
+            <td>Lo que esté barato</td>
+            <td>Repollo, zanahoria, auyama, tomate.</td>
+        </tr>
+    </table>
+
+    <!-- MENÚ DIARIO -->
+    <h2>3. 📅 Menú Diario (3000 kcal) - Fácil y Rápido</h2>
+
+    <div class="tip">
+        <strong>⏱️ REGLA DE ORO:</strong> Ninguna comida tarda más de 15 minutos.
+        La mayoría se preparan el domingo y solo se calientan.
+    </div>
+
+    <!-- Comida 1 -->
+    <div class="meal-card">
+        <div class="meal-header">
+            <span class="meal-time">🌅 06:00 AM - DESAYUNO</span>
+            <span class="meal-prep">⏱️ 5 min (licuadora)</span>
+        </div>
+        <strong>BATIDO MASA VENEZOLANO:</strong>
+        <ul>
+            <li><strong>500ml</strong> Leche completa (2 vasos grandes)</li>
+            <li><strong>100g</strong> Avena en hojuelas (1 taza)</li>
+            <li><strong>2</strong> Cambures maduros</li>
+            <li><strong>2 cdas</strong> Azúcar o papelón (calorías baratas)</li>
+            <li><strong>1 cda</strong> Aceite (opcional, +120 kcal)</li>
+        </ul>
+        <div class="macros-row">
+            <span class="macro">🔥 ~700 kcal</span>
+            <span class="macro">🥩 20g P</span>
+            <span class="macro">🍞 110g C</span>
+            <span class="macro">🧈 18g G</span>
+        </div>
+        <p class="prep-time"><em>Licuar todo y beber en 3 minutos. Las calorías líquidas entran fácil.</em></p>
+    </div>
+
+    <!-- Comida 2 -->
+    <div class="meal-card">
+        <div class="meal-header">
+            <span class="meal-time">🍳 09:00 AM - HUEVOS EXPRESS</span>
+            <span class="meal-prep">⏱️ 10 min</span>
+        </div>
+        <strong>HUEVOS CON AREPA/PAN:</strong>
+        <ul>
+            <li><strong>4-5</strong> Huevos (revueltos, fritos o como quieras)</li>
+            <li><strong>2</strong> Arepas medianas O 2 panes</li>
+            <li><strong>50g</strong> Queso blanco rallado</li>
+            <li><strong>1 cda</strong> Aceite para cocinar</li>
+        </ul>
+        <div class="macros-row">
+            <span class="macro">🔥 ~650 kcal</span>
+            <span class="macro">🥩 35g P</span>
+            <span class="macro">🍞 50g C</span>
+            <span class="macro">🧈 30g G</span>
+        </div>
+        <p class="prep-time"><em>Tip: Haz las arepas el domingo, congélalas. Solo calentar.</em></p>
+    </div>
+
+    <!-- Comida 3 -->
+    <div class="meal-card">
+        <div class="meal-header">
+            <span class="meal-time">🍚 12:30 PM - ALMUERZO</span>
+            <span class="meal-prep">⏱️ 2 min (recalentar tupper)</span>
+        </div>
+        <strong>PABELLÓN CONSTRUCTOR (o similar):</strong>
+        <ul>
+            <li><strong>300g</strong> Arroz blanco cocido (1.5 tazas)</li>
+            <li><strong>150g</strong> Caraotas negras (1/2 taza)</li>
+            <li><strong>1</strong> Plátano maduro (frito/horneado)</li>
+            <li><strong>100g</strong> Pollo desmechado O carne molida</li>
+        </ul>
+        <div class="macros-row">
+            <span class="macro">🔥 ~750 kcal</span>
+            <span class="macro">🥩 30g P</span>
+            <span class="macro">🍞 100g C</span>
+            <span class="macro">🧈 20g G</span>
+        </div>
+        <p class="prep-time"><em>Ya está hecho desde el domingo. Solo microondas 2 min.</em></p>
+    </div>
+
+    <!-- Comida 4 -->
+    <div class="meal-card">
+        <div class="meal-header">
+            <span class="meal-time">🥔 04:00 PM - PRE-ENTRENO</span>
+            <span class="meal-prep">⏱️ 2 min (recalentar)</span>
+        </div>
+        <strong>YUCA/PAPA CON HUEVOS:</strong>
+        <ul>
+            <li><strong>300g</strong> Yuca cocida O Papa cocida</li>
+            <li><strong>3</strong> Huevos duros (ya hechos)</li>
+            <li><strong>1</strong> Cambur</li>
+            <li><strong>Sal y limón</strong> al gusto</li>
+        </ul>
+        <div class="macros-row">
+            <span class="macro">🔥 ~550 kcal</span>
+            <span class="macro">🥩 22g P</span>
+            <span class="macro">🍞 75g C</span>
+            <span class="macro">🧈 15g G</span>
+        </div>
+        <p class="prep-time"><em>Yuca y huevos duros ya preparados. Solo sacar de la nevera.</em></p>
+    </div>
+
+    <!-- Comida 5 -->
+    <div class="meal-card">
+        <div class="meal-header">
+            <span class="meal-time">🍗 08:00 PM - CENA POST-ENTRENO</span>
+            <span class="meal-prep">⏱️ 2 min (recalentar)</span>
+        </div>
+        <strong>POLLO CON TODO:</strong>
+        <ul>
+            <li><strong>200g</strong> Pollo (muslo guisado o asado)</li>
+            <li><strong>250g</strong> Arroz blanco cocido (1 taza)</li>
+            <li><strong>100g</strong> Vegetales (lo que haya: repollo, ensalada)</li>
+            <li><strong>1 cda</strong> Aceite por encima</li>
+        </ul>
+        <div class="macros-row">
+            <span class="macro">🔥 ~600 kcal</span>
+            <span class="macro">🥩 40g P</span>
+            <span class="macro">🍞 65g C</span>
+            <span class="macro">🧈 18g G</span>
+        </div>
+        <p class="prep-time"><em>Tuppers listos. El aceite añade calorías sin volumen.</em></p>
+    </div>
+
+    <!-- TOTALES -->
+    <div class="note" style="border-color: var(--success);">
+        <h3 style="color: var(--success); margin-top: 0;">📊 TOTALES DEL DÍA</h3>
+        <table style="margin: 0;">
+            <tr>
+                <th>Calorías</th>
+                <th>Proteína</th>
+                <th>Carbohidratos</th>
+                <th>Grasas</th>
+            </tr>
+            <tr>
+                <td><strong>~3250 kcal</strong></td>
+                <td><strong>~147g</strong> (1.8g/kg para 80kg objetivo)</td>
+                <td><strong>~400g</strong></td>
+                <td><strong>~100g</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- BATCH COOKING -->
+    <h2>4. 🍳 Batch Cooking Dominical (2 horas = Semana lista)</h2>
+
+    <div class="economy-tip">
+        <strong>⏰ DOMINGO POR LA TARDE - 2 HORAS DE TRABAJO = TODA LA SEMANA LISTA</strong>
+    </div>
+
+    <table>
+        <tr>
+            <th>Paso</th>
+            <th>Qué hacer</th>
+            <th>Tiempo</th>
+        </tr>
+        <tr>
+            <td>1️⃣</td>
+            <td><strong>Olla de Arroz:</strong> Cocina 2kg de arroz de una vez</td>
+            <td>25 min</td>
+        </tr>
+        <tr>
+            <td>2️⃣</td>
+            <td><strong>Olla de Caraotas:</strong> 1kg de caraotas (o usa enlatadas)</td>
+            <td>Mientras el arroz</td>
+        </tr>
+        <tr>
+            <td>3️⃣</td>
+            <td><strong>Pollo Guisado:</strong> 2kg de muslos con cebolla, ajo, tomate</td>
+            <td>40 min</td>
+        </tr>
+        <tr>
+            <td>4️⃣</td>
+            <td><strong>Yuca/Papa:</strong> Cocina 2kg. Corta en trozos, hierve.</td>
+            <td>30 min</td>
+        </tr>
+        <tr>
+            <td>5️⃣</td>
+            <td><strong>Huevos Duros:</strong> Hierve 20-30 huevos de una vez</td>
+            <td>15 min</td>
+        </tr>
+        <tr>
+            <td>6️⃣</td>
+            <td><strong>Plátanos:</strong> Hornea 10 plátanos maduros (o fríe)</td>
+            <td>20 min</td>
+        </tr>
+        <tr>
+            <td>7️⃣</td>
+            <td><strong>Armar Tuppers:</strong> Divide todo en 10-12 tuppers</td>
+            <td>15 min</td>
+        </tr>
+    </table>
+
+    <div class="tip">
+        <strong>🎯 RESULTADO:</strong> De lunes a viernes solo sacas tupper → microondas 2 min → comes.<br>
+        <strong>Los huevos y cambures son para el día.</strong> El batido se hace en el momento (5 min).
+    </div>
+
+    <!-- ALTERNATIVAS -->
+    <h2>5. 🔄 Intercambios Económicos (Si algo está caro)</h2>
+
+    <table>
+        <tr>
+            <th>Si esto está caro...</th>
+            <th>Cámbialo por...</th>
+        </tr>
+        <tr>
+            <td>Pollo</td>
+            <td>Más huevos + sardinas enlatadas</td>
+        </tr>
+        <tr>
+            <td>Queso</td>
+            <td>Más huevos (proteína) + aceite (grasa)</td>
+        </tr>
+        <tr>
+            <td>Leche</td>
+            <td>Agua + más avena + aceite (para las calorías)</td>
+        </tr>
+        <tr>
+            <td>Avena</td>
+            <td>Fororo, maicena, harina de maíz</td>
+        </tr>
+        <tr>
+            <td>Papa</td>
+            <td>Yuca, ñame, ocumo, apio (lo que haya barato)</td>
+        </tr>
+        <tr>
+            <td>Plátano maduro</td>
+            <td>Más arroz + papelón para dulce</td>
+        </tr>
+        <tr>
+            <td>Carne molida</td>
+            <td>Hígado de res (MUY barato, altísima proteína)</td>
+        </tr>
+    </table>
+
+    <!-- TRUCOS FINALES -->
+    <h2>6. 💡 Trucos Pro Venezuela</h2>
+
+    <div class="economy-tip">
+        <ul style="margin: 0;">
+            <li><strong>🥚 Huevos en cartón grande:</strong> Siempre más barato que por unidad.</li>
+            <li><strong>🛒 Mercado municipal:</strong> 30-50% más barato que supermercado para vegetales y frutas.</li>
+            <li><strong>🍗 Compra pollo entero:</strong> Más barato. Desármalo tú (hay videos en YouTube).</li>
+            <li><strong>📦 Arroz en saco:</strong> El de 5kg o 10kg es mucho más económico por kilo.</li>
+            <li><strong>🧈 Aceite extra:</strong> Si necesitas calorías, 1 cucharada = 120 kcal. Añádelo a todo.</li>
+            <li><strong>🥛 Leche en polvo:</strong> A veces sale más económica. Rinde más.</li>
+            <li><strong>🫘 Granos secos:</strong> Las caraotas/lentejas secas son MUCHO más baratas que enlatadas.</li>
+            <li><strong>🍌 Compra plátanos verdes:</strong> Maduran en casa. Duran más y son más baratos.</li>
+        </ul>
+    </div>
+
+    <!-- SUPLEMENTOS -->
+    <h2>7. 💊 Suplementos (Solo lo esencial)</h2>
+
+    <div class="note">
+        <p><strong>99% de tus resultados vienen de la COMIDA, no de suplementos.</strong>
+            Solo si te sobra presupuesto:</p>
+        <ul>
+            <li><strong>Creatina (5g/día):</strong> El único suplemento con evidencia sólida. Busca monohidrato
+                genérico.</li>
+            <li><strong>Multivitamínico:</strong> Si no comes vegetales variados. Cualquier marca barata sirve.</li>
+        </ul>
+        <p><em>NO necesitas: Proteína en polvo (los huevos son más baratos y mejores), pre-entrenos, BCAAs, etc.</em>
+        </p>
+    </div>
+
+    <!-- NOTA FINAL -->
+    <div class="tip" style="border-color: var(--primary); background: #2c2a1a;">
+        <h3 style="color: var(--primary); margin-top: 0;">🎯 LA REGLA MÁS IMPORTANTE</h3>
+        <p><strong>Si no subes de peso en 2 semanas, añade:</strong></p>
+        <ul>
+            <li>1 cucharada más de aceite a cada comida (+360 kcal/día)</li>
+            <li>1 cambur extra con cada comida (+300 kcal/día)</li>
+            <li>1 vaso más de leche (+150 kcal/día)</li>
+        </ul>
+        <p>El músculo se construye con <strong>EXCESO de calorías</strong>. Si no subes de peso, no estás comiendo
+            suficiente.</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+================================================================
+🚀 GUÍA DE DEPLOYMENT EN VERCEL
+================================================================
+
+Tu proyecto está listo para desplegarse en Vercel GRATIS.
+
+================================================================
+📋 PASO 1: CREAR CUENTA EN VERCEL
+================================================================
+
+1. Ve a: https://vercel.com
+2. Click en "Sign Up"
+3. Conecta con tu cuenta de GitHub (recomendado)
+4. Verifica tu email
+
+================================================================
+📋 PASO 2: SUBIR TU PROYECTO A GITHUB
+================================================================
+
+OPCIÓN A: Desde GitHub Desktop (Más fácil)
+──────────────────────────────────────────
+1. Descarga GitHub Desktop: https://desktop.github.com
+2. Instala y abre GitHub Desktop
+3. Click en "File" → "Add Local Repository"
+4. Selecciona la carpeta: d:\gym-calistenia
+5. Click en "Create Repository"
+6. Nombre: "proyecto-80kg" (o el que quieras)
+7. Click en "Publish Repository"
+8. Desmarca "Keep this code private" si quieres que sea público
+9. Click en "Publish Repository"
+
+OPCIÓN B: Desde la terminal (Avanzado)
+──────────────────────────────────────
+1. Abre PowerShell en d:\gym-calistenia
+2. Ejecuta estos comandos:
+
+   git init
+   git add .
+   git commit -m "Initial commit: Proyecto 80kg"
+   git branch -M main
+   git remote add origin https://github.com/TU-USUARIO/proyecto-80kg.git
+   git push -u origin main
+
+   (Reemplaza TU-USUARIO con tu usuario de GitHub)
+
+================================================================
+📋 PASO 3: DESPLEGAR EN VERCEL
+================================================================
+
+1. Ve a: https://vercel.com/new
+2. Click en "Import Git Repository"
+3. Selecciona tu repositorio "proyecto-80kg"
+4. Click en "Import"
+5. Configuración:
+   - Framework Preset: Other
+   - Root Directory: ./
+   - Build Command: (dejar vacío)
+   - Output Directory: (dejar vacío)
+6. Click en "Deploy"
+7. ¡Espera 30-60 segundos!
+
+================================================================
+✅ LISTO - TU SITIO ESTÁ EN LÍNEA
+================================================================
+
+Vercel te dará una URL como:
+https://proyecto-80kg.vercel.app
+
+Puedes:
+- Compartir esta URL desde cualquier dispositivo
+- Acceder desde tu celular
+- Vercel actualiza automáticamente cuando haces cambios en GitHub
+
+================================================================
+🔄 CÓMO ACTUALIZAR EL SITIO
+================================================================
+
+Cada vez que hagas cambios:
+
+OPCIÓN A: GitHub Desktop
+1. Abre GitHub Desktop
+2. Verás los archivos cambiados
+3. Escribe un mensaje (ej: "Actualizado plan de entrenamiento")
+4. Click en "Commit to main"
+5. Click en "Push origin"
+6. Vercel detecta el cambio y actualiza automáticamente
+
+OPCIÓN B: Terminal
+git add .
+git commit -m "Descripción del cambio"
+git push
+
+================================================================
+💡 DOMINIO PERSONALIZADO (Opcional)
+================================================================
+
+Si quieres un dominio como: www.proyecto80kg.com
+
+1. Ve a tu proyecto en Vercel
+2. Click en "Settings" → "Domains"
+3. Añade tu dominio
+4. Sigue las instrucciones para configurar DNS
+
+Dominios baratos:
+- Namecheap: ~$10/año
+- Google Domains: ~$12/año
+
+================================================================
+🔒 HACER EL REPOSITORIO PRIVADO (Opcional)
+================================================================
+
+Si no quieres que otros vean tu código:
+
+1. Ve a tu repositorio en GitHub
+2. Click en "Settings"
+3. Scroll hasta "Danger Zone"
+4. Click en "Change visibility"
+5. Selecciona "Private"
+
+Nota: El sitio en Vercel seguirá siendo público, solo el código
+será privado.
+
+================================================================
+📱 ACCEDER DESDE TU CELULAR
+================================================================
+
+1. Abre el navegador en tu celular
+2. Ve a: https://proyecto-80kg.vercel.app (tu URL)
+3. Click en el menú del navegador → "Añadir a pantalla de inicio"
+4. Ahora tienes una "app" en tu celular
+
+================================================================
+⚠️ NOTAS IMPORTANTES
+================================================================
+
+✓ Vercel es GRATIS para proyectos personales
+✓ Actualizaciones automáticas desde GitHub
+✓ HTTPS incluido (seguro)
+✓ CDN global (rápido desde cualquier país)
+✓ Sin límite de visitas para proyectos pequeños
+
+✗ NO subas información sensible (contraseñas, datos personales)
+✗ La imagen week0.jpg se subirá (si quieres que sea privada, bórrala)
+
+================================================================
+🆘 PROBLEMAS COMUNES
+================================================================
+
+Problema: "Build failed"
+Solución: Asegúrate que todos los archivos .html están en la raíz
+
+Problema: "404 Not Found"
+Solución: Verifica que index.html existe y está en la raíz
+
+Problema: No se ven las imágenes
+Solución: Verifica que week0.jpg está en la raíz del proyecto
+
+================================================================

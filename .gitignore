@@ -1,0 +1,16 @@
+# Archivos de desarrollo
+*.log
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Archivos temporales
+*.tmp
+*.bak
+~*
+
+# Node modules (si usas algún build tool)
+node_modules/

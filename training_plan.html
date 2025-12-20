@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Plan de Entrenamiento: Físico David Laid</title>
+    <style>
+        :root {
+            --primary: #d4af37;
+            --bg: #121212;
+            --text: #e0e0e0;
+            --card-bg: #1e1e1e;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        .nav-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            border: 1px solid var(--primary);
+            padding: 5px 15px;
+            border-radius: 5px;
+        }
+
+        .phase-badge {
+            background: var(--primary);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .priority-badge {
+            background: var(--danger);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        h1 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #f1c40f;
+            margin-top: 30px;
+            border-left: 5px solid #f1c40f;
+            padding-left: 10px;
+        }
+
+        h3 {
+            color: #aaa;
+        }
+
+        .concept {
+            background-color: #2c2c2c;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        .priority-box {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid var(--primary);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .day-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .day-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .day-focus {
+            background: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .exercise-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+
+        .exercise-table th {
+            background: #333;
+            color: var(--primary);
+            padding: 10px;
+            text-align: left;
+        }
+
+        .exercise-table td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .exercise-table tr:hover {
+            background: #252525;
+        }
+
+        .exercise-name {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .priority-exercise {
+            background: rgba(212, 175, 55, 0.1) !important;
+            border-left: 3px solid var(--primary);
+        }
+
+        .sets-reps {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .rpe-badge {
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .note {
+            background-color: #2c2c2c;
+            border-left: 5px solid #f1c40f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .tip {
+            background-color: #0f2c15;
+            border-left: 5px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .warning {
+            background-color: #2c0b0e;
+            border-left: 5px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        ul li:before {
+            content: "→ ";
+            color: var(--primary);
+        }
+
+        .rest-day {
+            background: linear-gradient(135deg, #1a2c1a 0%, #0f2c15 100%);
+            border: 1px dashed var(--success);
+        }
+
+        .volume-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .volume-table th,
+        .volume-table td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .volume-table th {
+            background: #333;
+            color: var(--primary);
+        }
+
+        .high-volume {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .day-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="index.html" class="nav-btn">← Volver al Dashboard</a>
+
+    <span class="phase-badge">FASE 1: MESES 1-3</span>
+    <span class="priority-badge">🎯 OBJETIVO: DAVID LAID</span>
+
+    <h1>💪 Plan de Entrenamiento: Físico Modelo Estético</h1>
+
+    <!-- FILOSOFÍA -->
+    <div class="priority-box">
+        <h3 style="color: var(--primary); margin-top: 0;">🎯 LA VISIÓN: Físico David Laid</h3>
+        <p><strong>David Laid NO es el más grande.</strong> Es el más <strong>ESTÉTICO</strong>. Su físico se basa en:
+        </p>
+        <ul style="list-style: none; padding: 0;">
+            <li>🔺 <strong>V-TAPER EXTREMO:</strong> Hombros 3D muy anchos + Cintura diminuta</li>
+            <li>📐 <strong>PROPORCIONES:</strong> Todo balanceado, nada desproporcionado</li>
+            <li>🎯 <strong>DEFINICIÓN:</strong> Siempre 10-12% grasa corporal</li>
+            <li>✨ <strong>PUNTOS CLAVE:</strong> Deltoides laterales, Espalda ancha, Pecho superior</li>
+        </ul>
+        <p style="margin-bottom: 0;"><strong>TU VENTAJA:</strong> 1.80m + Cintura naturalmente estrecha = La estructura
+            PERFECTA para este look.</p>
+    </div>
+
+    <!-- PRIORIDADES -->
+    <h2>1. 🏆 Tus 3 Prioridades Absolutas (V-Taper)</h2>
+
+    <div class="concept">
+        <p>Para crear la ilusión de hombros anchos y cintura pequeña, estos músculos son TU PRIORIDAD #1:</p>
+
+        <table class="volume-table">
+            <tr>
+                <th>Músculo</th>
+                <th>Prioridad</th>
+                <th>Series/Semana</th>
+                <th>Por qué</th>
+            </tr>
+            <tr>
+                <td><strong>🎯 Deltoides Lateral</strong></td>
+                <td style="color: var(--danger);">MÁXIMA</td>
+                <td class="high-volume">20-25 series</td>
+                <td>Crea la anchura visual. El músculo MÁS importante para el V-taper.</td>
+            </tr>
+            <tr>
+                <td><strong>🎯 Espalda (Dorsales)</strong></td>
+                <td style="color: var(--danger);">MÁXIMA</td>
+                <td class="high-volume">16-20 series</td>
+                <td>Anchura real + La "V" desde atrás.</td>
+            </tr>
+            <tr>
+                <td><strong>🎯 Pecho Superior</strong></td>
+                <td style="color: var(--warning);">ALTA</td>
+                <td class="high-volume">12-16 series</td>
+                <td>Da profundidad y el look "relleno" en camiseta.</td>
+            </tr>
+            <tr>
+                <td>Brazos</td>
+                <td>Media</td>
+                <td>10-14 series</td>
+                <td>Crecen con los compuestos. Añadir trabajo directo.</td>
+            </tr>
+            <tr>
+                <td>Piernas</td>
+                <td>Media</td>
+                <td>12-16 series</td>
+                <td>Proporcionales, no masivas. Balance estético.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- CONCEPTOS -->
+    <h2>2. 🧠 Conceptos Científicos (Memoriza esto)</h2>
+
+    <div class="concept">
+        <h3>📊 RPE (Rate of Perceived Exertion) - Tu Guía de Intensidad</h3>
+        <ul>
+            <li><strong>RPE 10:</strong> Fallo absoluto. No puedes hacer ni 1 más.</li>
+            <li><strong>RPE 9:</strong> Te queda 1 repetición en el tanque.</li>
+            <li><strong>RPE 8:</strong> Te quedan 2 repeticiones. <strong>← ZONA ÓPTIMA para la mayoría de
+                    ejercicios</strong></li>
+            <li><strong>RPE 7:</strong> Te quedan 3 repeticiones. Buen calentamiento.</li>
+        </ul>
+        <p><strong>REGLA:</strong> Series de trabajo = RPE 8-9. Ir al fallo (RPE 10) solo en el último set de
+            aislamiento.</p>
+    </div>
+
+    <div class="concept">
+        <h3>📈 Doble Progresión - Cómo Subir Peso</h3>
+        <p>Si el rango es <strong>8-12 repeticiones</strong>:</p>
+        <ol>
+            <li>Semana 1: 20kg × 8 reps</li>
+            <li>Semana 2: 20kg × 10 reps</li>
+            <li>Semana 3: 20kg × 12 reps ← <strong>¡Llegaste al tope!</strong></li>
+            <li>Semana 4: <strong>SUBE a 22.5kg</strong> × 8 reps. Repite el ciclo.</li>
+        </ol>
+        <p><strong>NUNCA subas peso si no completaste las reps con técnica perfecta.</strong></p>
+    </div>
+
+    <!-- RUTINA SEMANAL -->
+    <h2>3. 📅 La Rutina Semanal (Upper/Lower + Hombros Extra)</h2>
+
+    <div class="note">
+        <strong>⏰ Estructura:</strong> 5 días de entrenamiento + 2 días de descanso<br>
+        <strong>⏱️ Duración:</strong> 60-75 minutos por sesión<br>
+        <strong>🔄 Frecuencia:</strong> Cada músculo 2x/semana (hombros 3x)
+    </div>
+
+    <!-- DÍA 1 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 DÍA 1: PUSH (Pecho, Hombros, Tríceps)</span>
+            <span class="day-focus">🎯 Enfoque: Pecho Superior + Laterales</span>
+        </div>
+
+        <table class="exercise-table">
+            <tr>
+                <th>Ejercicio</th>
+                <th>Series × Reps</th>
+                <th>RPE</th>
+                <th>Notas</th>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">1. Press Inclinado (Mancuernas) ⭐</td>
+                <td class="sets-reps">4 × 8-10</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>30-45° inclinación. Pecho SUPERIOR = Estética.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">2. Press de Banca Plano (Barra)</td>
+                <td class="sets-reps">3 × 6-8</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>Fuerza base. No rebotes la barra.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">3. Elevaciones Laterales ⭐⭐</td>
+                <td class="sets-reps">5 × 15-20</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>PRIORIDAD #1. Control total. Sin impulso.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">4. Aperturas Inclinadas (Mancuernas)</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Estiramiento profundo del pecho.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">5. Press Militar (Mancuernas)</td>
+                <td class="sets-reps">3 × 10-12</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Deltoides anterior. Sentado para no hacer trampa.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">6. Extensiones Tríceps (Polea)</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Codos fijos. Contracción completa.</td>
+            </tr>
+        </table>
+        <p style="color: #888; font-size: 0.9rem;"><strong>Descanso:</strong> 2-3 min en compuestos, 60-90 seg en
+            aislamiento.</p>
+    </div>
+
+    <!-- DÍA 2 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 DÍA 2: PULL (Espalda, Bíceps, Trapecio)</span>
+            <span class="day-focus">🎯 Enfoque: Anchura Dorsal</span>
+        </div>
+
+        <table class="exercise-table">
+            <tr>
+                <th>Ejercicio</th>
+                <th>Series × Reps</th>
+                <th>RPE</th>
+                <th>Notas</th>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">1. Dominadas (Agarre Ancho) ⭐⭐</td>
+                <td class="sets-reps">4 × 6-10</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>PRIORIDAD. Si no puedes, usa banda o máquina.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">2. Remo con Barra ⭐</td>
+                <td class="sets-reps">4 × 8-10</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>Espesor de espalda. Torso a 45°.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">3. Jalón al Pecho (Agarre Neutro)</td>
+                <td class="sets-reps">3 × 10-12</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Anchura extra. Aprieta los dorsales abajo.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">4. Remo en Polea Baja (1 Mano)</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Contracción unilateral. Estiramiento.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">5. Face Pulls ⭐</td>
+                <td class="sets-reps">4 × 15-20</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Deltoides posterior + Salud del hombro. ESENCIAL.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">6. Curl Bíceps (Barra o Mancuernas)</td>
+                <td class="sets-reps">3 × 10-12</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Control total. Sin balanceo.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">7. Neck Curls + Extensions ⭐</td>
+                <td class="sets-reps">3 × 15-20 c/u</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>CUELLO GRUESO = Masculinidad. Boca arriba + boca abajo.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- DÍA 3 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 DÍA 3: LEGS (Piernas Completas)</span>
+            <span class="day-focus">🎯 Enfoque: Proporciones Estéticas</span>
+        </div>
+
+        <table class="exercise-table">
+            <tr>
+                <th>Ejercicio</th>
+                <th>Series × Reps</th>
+                <th>RPE</th>
+                <th>Notas</th>
+            </tr>
+            <tr>
+                <td class="exercise-name">1. Sentadilla (Barra Alta)</td>
+                <td class="sets-reps">4 × 6-8</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>Rey de piernas. Profundidad paralela.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">2. Peso Muerto Rumano</td>
+                <td class="sets-reps">3 × 8-10</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>Isquiotibiales + Glúteos. Estira bien.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">3. Prensa de Piernas</td>
+                <td class="sets-reps">3 × 10-12</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Pies arriba para más glúteo/isquio.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">4. Extensiones de Cuádriceps</td>
+                <td class="sets-reps">3 × 15-20</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Ardor total. Contracción arriba.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">5. Curl Femoral</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Isquiotibiales aislados.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">6. Pantorrillas (De Pie)</td>
+                <td class="sets-reps">4 × 12-15</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Pausa 2 seg arriba. Rango completo.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- DÍA 4 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 DÍA 4: UPPER B (Volumen + Hombros)</span>
+            <span class="day-focus">🎯 Enfoque: Laterales + Bombeo</span>
+        </div>
+
+        <table class="exercise-table">
+            <tr>
+                <th>Ejercicio</th>
+                <th>Series × Reps</th>
+                <th>RPE</th>
+                <th>Notas</th>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">1. Elevaciones Laterales (Cable) ⭐⭐</td>
+                <td class="sets-reps">5 × 15-20</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>PRIORIDAD. Tensión constante con cable.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">2. Press Inclinado (Barra)</td>
+                <td class="sets-reps">3 × 8-10</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>Más volumen de pecho superior.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">3. Dominadas (Agarre Cerrado) ⭐</td>
+                <td class="sets-reps">3 × 8-12</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Dorsales + Bíceps. Estiramiento completo.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">4. Peck Deck / Aperturas Máquina</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Contracción máxima del pecho.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">5. Remo en Máquina (Unilateral)</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Espalda media. Aprieta la escápula.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">6. Face Pulls ⭐</td>
+                <td class="sets-reps">3 × 15-20</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Deltoides posterior. Siempre incluir.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">7. Super-Serie Brazos</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Curl + Extensión sin descanso.</td>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">8. Neck Curls + Extensions ⭐</td>
+                <td class="sets-reps">3 × 15-20 c/u</td>
+                <td><span class="rpe-badge">RPE 8</span></td>
+                <td>Segunda sesión de cuello. Cuello ancho = Look de poder.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- DÍA 5 -->
+    <div class="day-card">
+        <div class="day-header">
+            <span class="day-title">📅 DÍA 5: LEGS B + HOMBROS</span>
+            <span class="day-focus">🎯 Enfoque: Laterales Extra + Piernas Detalle</span>
+        </div>
+
+        <table class="exercise-table">
+            <tr>
+                <th>Ejercicio</th>
+                <th>Series × Reps</th>
+                <th>RPE</th>
+                <th>Notas</th>
+            </tr>
+            <tr class="priority-exercise">
+                <td class="exercise-name">1. Elevaciones Laterales (Mancuernas) ⭐⭐</td>
+                <td class="sets-reps">5 × 15-20</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>TERCERA sesión de laterales = Hombros 3D.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">2. Sentadilla Búlgara</td>
+                <td class="sets-reps">3 × 8-10/pierna</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>El ejercicio más odiado y efectivo.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">3. Hip Thrust</td>
+                <td class="sets-reps">3 × 10-12</td>
+                <td><span class="rpe-badge">RPE 9</span></td>
+                <td>Glúteos. Contracción arriba 2 seg.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">4. Extensiones de Cuádriceps</td>
+                <td class="sets-reps">3 × 15-20</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Definición del cuádriceps.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">5. Curl Femoral Tumbado</td>
+                <td class="sets-reps">3 × 12-15</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Isquiotibiales aislados.</td>
+            </tr>
+            <tr>
+                <td class="exercise-name">6. Pantorrillas (Sentado)</td>
+                <td class="sets-reps">4 × 15-20</td>
+                <td><span class="rpe-badge">RPE 10</span></td>
+                <td>Sóleo. Reps altas.</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- DÍA 6-7 -->
+    <div class="day-card rest-day">
+        <div class="day-header">
+            <span class="day-title">📅 DÍAS 6-7: DESCANSO ACTIVO</span>
+            <span class="day-focus">🔋 Recuperación</span>
+        </div>
+        <ul>
+            <li><strong>Caminar:</strong> 30-45 min (cardio LISS, quema grasa sin afectar músculo)</li>
+            <li><strong>Estiramientos:</strong> 15 min de movilidad</li>
+            <li><strong>Vacuum Abdominal:</strong> 4 series de 30 seg (cintura pequeña)</li>
+            <li><strong>Dormir:</strong> 7-9 horas. Aquí crece el músculo.</li>
+        </ul>
+    </div>
+
+    <!-- VOLUMEN TOTAL -->
+    <h2>4. 📊 Volumen Semanal Total</h2>
+
+    <div class="concept">
+        <table class="volume-table">
+            <tr>
+                <th>Grupo Muscular</th>
+                <th>Series/Semana</th>
+                <th>Frecuencia</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Deltoides Lateral</td>
+                <td class="high-volume">20-25</td>
+                <td>3x/semana</td>
+                <td style="color: var(--danger);">⭐ PRIORIDAD MÁXIMA</td>
+            </tr>
+            <tr>
+                <td>Espalda</td>
+                <td class="high-volume">18-20</td>
+                <td>2x/semana</td>
+                <td style="color: var(--danger);">⭐ PRIORIDAD</td>
+            </tr>
+            <tr>
+                <td>Pecho</td>
+                <td class="high-volume">14-16</td>
+                <td>2x/semana</td>
+                <td style="color: var(--warning);">Alta</td>
+            </tr>
+            <tr>
+                <td>Deltoides Posterior</td>
+                <td>10-12</td>
+                <td>2x/semana</td>
+                <td>Media</td>
+            </tr>
+            <tr>
+                <td>Bíceps</td>
+                <td>10-12</td>
+                <td>2x/semana</td>
+                <td>Media</td>
+            </tr>
+            <tr>
+                <td>Tríceps</td>
+                <td>10-12</td>
+                <td>2x/semana</td>
+                <td>Media</td>
+            </tr>
+            <tr>
+                <td>Cuádriceps</td>
+                <td>12-14</td>
+                <td>2x/semana</td>
+                <td>Media</td>
+            </tr>
+            <tr>
+                <td>Isquiotibiales</td>
+                <td>10-12</td>
+                <td>2x/semana</td>
+                <td>Media</td>
+            </tr>
+            <tr>
+                <td>Pantorrillas</td>
+                <td>8-10</td>
+                <td>2x/semana</td>
+                <td>Media</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- VACUUM -->
+    <h2>5. 🎯 El Secreto de la Cintura Pequeña: VACUUM</h2>
+
+    <div class="tip">
+        <h3 style="color: var(--success); margin-top: 0;">El Vacuum Abdominal</h3>
+        <p>David Laid tiene cintura diminuta no solo por genética, sino por entrenar el <strong>músculo transverso
+                abdominal</strong>.</p>
+        <ul>
+            <li><strong>Cómo:</strong> Exhala todo el aire. Mete el ombligo hacia la columna. Mantén 20-30 seg.</li>
+            <li><strong>Cuándo:</strong> Al final de cada entrenamiento + al despertar (en ayunas).</li>
+            <li><strong>Series:</strong> 4 series de 30 segundos, 2 veces al día.</li>
+            <li><strong>Resultado:</strong> Cintura más pequeña en 4-6 semanas.</li>
+        </ul>
+    </div>
+
+    <!-- PROGRESIÓN -->
+    <h2>6. 📈 Sistema de Progresión (Doble Progresión)</h2>
+
+    <div class="warning">
+        <h3 style="color: var(--danger); margin-top: 0;">⚠️ REGLA DE ORO</h3>
+        <p><strong>Si no anotas, no creces.</strong> Lleva un registro de cada sesión:</p>
+        <code style="display: block; background: #000; padding: 10px; border-radius: 5px; margin: 10px 0;">
+            Fecha | Ejercicio | Peso | Reps | RPE
+        </code>
+        <p>Si la semana que viene no superas el volumen total (Peso × Reps) de esta semana, <strong>no has
+                crecido</strong>.</p>
+    </div>
+
+    <!-- TIPS FINALES -->
+    <h2>7. 💡 Tips Pro David Laid</h2>
+
+    <div class="concept">
+        <ul>
+            <li><strong>Tempo en Laterales:</strong> 2 segundos subiendo, 2 segundos bajando. Sin impulso NUNCA.</li>
+            <li><strong>Dominadas:</strong> Si no puedes hacer 6, usa banda elástica o máquina de jalón. Progresa hasta
+                hacerlas libres.</li>
+            <li><strong>Pecho Inclinado &gt; Plano:</strong> El pecho superior es lo que se ve con ropa. Priorízalo.
+            </li>
+            <li><strong>Face Pulls:</strong> No los saltes. Deltoides posterior = hombros 3D desde todos los ángulos.
+            </li>
+            <li><strong>Descanso:</strong> 2-3 min entre series de compuestos. 60-90 seg en aislamiento.</li>
+            <li><strong>Calentamiento:</strong> 5 min cardio + 2 series ligeras del primer ejercicio.</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
