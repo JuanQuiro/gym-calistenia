@@ -229,10 +229,38 @@
             font-weight: bold;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .day-header {
                 flex-direction: column;
-                gap: 10px;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .day-title {
+                font-size: 1.1rem;
+            }
+
+            .exercise-table {
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .exercise-table th,
+            .exercise-table td {
+                padding: 8px;
+                /* Reduce padding on mobile */
+                font-size: 0.9rem;
+                white-space: nowrap;
+            }
+
+            /* Allow notes to wrap if needed, but keeping nowrap is safer for simple tables. 
+               Let's try wrapping for notes column if possible, but simpler is scrolling.
+               We'll stick to scrolling for now as it breaks layout less. */
+
+            .rpe-badge {
+                font-size: 0.75rem;
+                padding: 2px 5px;
             }
         }
     </style>
@@ -755,6 +783,423 @@
             <li><strong>Descanso:</strong> 2-3 min entre series de compuestos. 60-90 seg en aislamiento.</li>
             <li><strong>Calentamiento:</strong> 5 min cardio + 2 series ligeras del primer ejercicio.</li>
         </ul>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- SECCIÓN ESPECIAL: ENTRENAMIENTO EN CASA -->
+    <!-- ============================================== -->
+
+    <div style="margin-top: 50px; padding-top: 30px; border-top: 3px solid #e74c3c;">
+        <h2 style="color: #e74c3c; border-left-color: #e74c3c;">🏠 8. ALTERNATIVA: Entrenamiento en Casa</h2>
+
+        <div class="warning">
+            <h3 style="color: var(--danger); margin-top: 0;">🗓️ VACACIONES 22 DIC - 5 ENERO</h3>
+            <p>Los gyms están cerrados, pero <strong>NO PIERDES GANANCIAS</strong> si entrenas en casa correctamente.
+            </p>
+            <p><strong>Equipo:</strong> 90% PESO CORPORAL + Mancuernas ligeras solo si puedes</p>
+        </div>
+
+        <div class="tip">
+            <h3 style="color: var(--success); margin-top: 0;">🎯 ADAPTACIÓN: Mancuernas Pesadas</h3>
+            <p><strong>Si las mancuernas son muy pesadas, usa estas alternativas:</strong></p>
+            <ul>
+                <li><strong>Botellas de agua:</strong> 1-2 litros = 1-2 kg (para laterales)</li>
+                <li><strong>Bolsa con libros:</strong> Mochila con peso ajustable</li>
+                <li><strong>1 sola mancuerna:</strong> Haz el ejercicio de un lado y luego del otro</li>
+                <li><strong>Solo peso corporal:</strong> Las alternativas están abajo en cada ejercicio</li>
+            </ul>
+        </div>
+
+        <!-- PRINCIPIOS CASA -->
+        <div class="concept">
+            <h3 style="color: var(--primary);">💡 Principios del Entrenamiento en Casa (Peso Corporal)</h3>
+            <ul>
+                <li><strong>Más repeticiones:</strong> Sin pesas, compensa con más reps (15-30 en lugar de 8-12)</li>
+                <li><strong>Tempo MUY lento:</strong> 4 seg bajando, 2 seg pausa, 2 seg subiendo = EQUIVALE A PESO</li>
+                <li><strong>Menos descanso:</strong> 30-45 seg entre series para mantener intensidad</li>
+                <li><strong>Isométricos:</strong> Mantener la posición 10-15 seg al final del set</li>
+                <li><strong>Hasta el FALLO:</strong> Sin pesas, debes ir al fallo muscular (RPE 10)</li>
+            </ul>
+        </div>
+
+        <!-- DÍA 1 CASA: PUSH -->
+        <div class="day-card" style="border-color: #e74c3c;">
+            <div class="day-header">
+                <span class="day-title" style="color: #e74c3c;">🏠 DÍA 1 CASA: PUSH (Pecho, Hombros, Tríceps)</span>
+                <span class="day-focus">⏱️ 45-60 min</span>
+            </div>
+
+            <table class="exercise-table">
+                <tr>
+                    <th>Ejercicio</th>
+                    <th>Series × Reps</th>
+                    <th>RPE</th>
+                    <th>Notas</th>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">1. Flexiones Inclinadas (pies elevados) ⭐</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Pies en silla/cama. PECHO SUPERIOR. Tempo: 4-2-2</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">2. Flexiones Normales</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Baja hasta el suelo. Tempo lento: 4 seg bajando.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">3. Levantamientos Laterales (BOTELLAS AGUA) ⭐⭐</td>
+                    <td class="sets-reps">5 × 20-30</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Usa botellas de 1-2L. Sin impulso. Tempo: 3-1-3</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">4. Flexiones Anchas (manos bien separadas)</td>
+                    <td class="sets-reps">3 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Manos más anchas que hombros. Más pecho.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">5. Pike Push-ups (Flexiones en V)</td>
+                    <td class="sets-reps">4 × 10-15</td>
+                    <td><span class="rpe-badge">RPE 8-9</span></td>
+                    <td>Forma de V invertida. HOMBROS. Alternativa a press militar.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">6. Flexiones Diamante</td>
+                    <td class="sets-reps">3 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Manos juntas formando diamante. TRÍCEPS.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">7. Dips en Silla</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Manos en silla, baja hasta 90°. Tríceps.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">8. Círculos Laterales (brazos) ⭐</td>
+                    <td class="sets-reps">3 × 30 seg</td>
+                    <td><span class="rpe-badge">RPE 10</span></td>
+                    <td>Brazos extendidos, círculos pequeños. QUEMA deltoides.</td>
+                </tr>
+            </table>
+            <p style="color: #888; font-size: 0.9rem;"><strong>Finisher:</strong> 100 flexiones totales (haz sets hasta
+                completar)</p>
+        </div>
+
+        <!-- DÍA 2 CASA: PULL -->
+        <div class="day-card" style="border-color: #3498db;">
+            <div class="day-header">
+                <span class="day-title" style="color: #3498db;">🏠 DÍA 2 CASA: PULL (Espalda, Bíceps)</span>
+                <span class="day-focus">⏱️ 45-60 min</span>
+            </div>
+
+            <table class="exercise-table">
+                <tr>
+                    <th>Ejercicio</th>
+                    <th>Series × Reps</th>
+                    <th>RPE</th>
+                    <th>Notas</th>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">1. Remo Invertido (bajo mesa/barra) ⭐⭐</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Acuéstate bajo una mesa fuerte, agarra el borde, jala el pecho hacia arriba.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">2. Dominadas (si tienes barra) ⭐⭐</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Si no tienes barra, haz más remo invertido.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">3. Superman Hold</td>
+                    <td class="sets-reps">4 × 30 seg</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Boca abajo, levanta brazos y piernas. MANTÉN arriba.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">4. Remo Toalla en Puerta</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 8-9</span></td>
+                    <td>Toalla en manija de puerta, inclínate hacia atrás, jala.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">5. Curl Bíceps (BOTELLAS/MOCHILA)</td>
+                    <td class="sets-reps">4 × 20-30</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Usa botellas de agua o mochila con libros.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">6. Curl Isométrico (Toalla)</td>
+                    <td class="sets-reps">3 × 30 seg</td>
+                    <td><span class="rpe-badge">RPE 10</span></td>
+                    <td>Pisa una toalla, jala hacia arriba, mantén tensión.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">7. Retracción de Escápulas (en pared)</td>
+                    <td class="sets-reps">3 × 15</td>
+                    <td><span class="rpe-badge">RPE 8</span></td>
+                    <td>Espalda en pared, aprieta escápulas hacia atrás.</td>
+                </tr>
+            </table>
+            <p style="color: #888; font-size: 0.9rem;"><strong>Finisher:</strong> Remo invertido: 50 reps totales (sets
+                hasta completar)</p>
+        </div>
+
+        <!-- DÍA 3 CASA: LEGS -->
+        <div class="day-card" style="border-color: #2ecc71;">
+            <div class="day-header">
+                <span class="day-title" style="color: #2ecc71;">🏠 DÍA 3 CASA: LEGS (100% Peso Corporal)</span>
+                <span class="day-focus">⏱️ 50-60 min</span>
+            </div>
+
+            <table class="exercise-table">
+                <tr>
+                    <th>Ejercicio</th>
+                    <th>Series × Reps</th>
+                    <th>RPE</th>
+                    <th>Notas</th>
+                </tr>
+                <tr>
+                    <td class="exercise-name">1. Sentadilla Profunda (tempo lento)</td>
+                    <td class="sets-reps">4 × 20-30</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Sin peso. Baja 4 seg, pausa 2 seg, sube 2 seg.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">2. Sentadilla Búlgara (SIN peso) ⭐</td>
+                    <td class="sets-reps">4 × 15 c/pierna</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Pie trasero en silla. EL MEJOR ejercicio. Lento.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">3. Sentadilla con Salto</td>
+                    <td class="sets-reps">4 × 15</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Explosivo. Cuádriceps + potencia.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">4. Zancadas Caminando</td>
+                    <td class="sets-reps">3 × 24 pasos</td>
+                    <td><span class="rpe-badge">RPE 8</span></td>
+                    <td>Sin peso. Alterna piernas. Mantén torso recto.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">5. Hip Thrust 1 Pierna ⭐</td>
+                    <td class="sets-reps">4 × 15 c/lado</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Espalda en silla, UNA pierna. GLÚTEOS.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">6. Curl Femoral Nórdico</td>
+                    <td class="sets-reps">3 × 6-10</td>
+                    <td><span class="rpe-badge">RPE 10</span></td>
+                    <td>Rodillas en almohada, alguien sostiene tobillos. Baja LENTO.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">7. Pantorrillas 1 Pierna (escalón)</td>
+                    <td class="sets-reps">4 × 25 c/lado</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>En un escalón. Rango completo. Pausa arriba 2 seg.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">8. Sentadilla Isométrica (Wall Sit)</td>
+                    <td class="sets-reps">3 × 60 seg</td>
+                    <td><span class="rpe-badge">RPE 10</span></td>
+                    <td>Espalda en pared, rodillas 90°. AGUANTA.</td>
+                </tr>
+            </table>
+            <p style="color: #888; font-size: 0.9rem;"><strong>Finisher:</strong> 100 Sentadillas con salto (sets hasta
+                completar)</p>
+        </div>
+
+        <!-- DÍA 4 CASA: UPPER + LATERALES -->
+        <div class="day-card" style="border-color: #9b59b6;">
+            <div class="day-header">
+                <span class="day-title" style="color: #9b59b6;">🏠 DÍA 4 CASA: FULL UPPER (Peso Corporal)</span>
+                <span class="day-focus">⏱️ 50-60 min</span>
+            </div>
+
+            <table class="exercise-table">
+                <tr>
+                    <th>Ejercicio</th>
+                    <th>Series × Reps</th>
+                    <th>RPE</th>
+                    <th>Notas</th>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">1. Laterales con Botellas ⭐⭐</td>
+                    <td class="sets-reps">5 × 25-30</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Botellas 1-2L. Segunda sesión de hombros.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">2. Flexiones Normales</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Técnica perfecta. Tempo: 4-2-2</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">3. Remo Invertido (mesa)</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Bajo mesa fuerte. Jala pecho hacia arriba.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">4. Pike Push-ups</td>
+                    <td class="sets-reps">4 × 10-15</td>
+                    <td><span class="rpe-badge">RPE 8-9</span></td>
+                    <td>Forma de V. HOMBROS.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">5. Flexiones Archer (si puedes)</td>
+                    <td class="sets-reps">3 × 8-10 c/lado</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Brazo extendido a un lado. Más difícil que normal.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">6. Dips en Silla</td>
+                    <td class="sets-reps">4 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Tríceps. Baja hasta 90°.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">7. Círculos Laterales + Frontales ⭐</td>
+                    <td class="sets-reps">3 × 30+30 seg</td>
+                    <td><span class="rpe-badge">RPE 10</span></td>
+                    <td>Brazos extendidos, círculos 30 seg + brazos al frente 30 seg.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- DÍA 5 CASA: LEGS + HOMBROS -->
+        <div class="day-card" style="border-color: #f39c12;">
+            <div class="day-header">
+                <span class="day-title" style="color: #f39c12;">🏠 DÍA 5 CASA: LEGS B + HOMBROS (Peso Corporal)</span>
+                <span class="day-focus">⏱️ 50-60 min</span>
+            </div>
+
+            <table class="exercise-table">
+                <tr>
+                    <th>Ejercicio</th>
+                    <th>Series × Reps</th>
+                    <th>RPE</th>
+                    <th>Notas</th>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">1. Laterales con Botellas ⭐⭐</td>
+                    <td class="sets-reps">5 × 25-30</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>TERCERA sesión. Hombros 3D garantizados.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">2. Sentadilla con Salto</td>
+                    <td class="sets-reps">4 × 15</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Explosivo. Cuádriceps + potencia.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">3. Sentadilla Sumo (sin peso)</td>
+                    <td class="sets-reps">4 × 25</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Piernas bien abiertas. Tempo lento. Aductores + glúteos.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">4. Step-ups (sin peso)</td>
+                    <td class="sets-reps">3 × 15 c/pierna</td>
+                    <td><span class="rpe-badge">RPE 8</span></td>
+                    <td>Sube y baja de silla/escalón. Cuádriceps.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">5. Puente de Glúteo (1 pierna)</td>
+                    <td class="sets-reps">4 × 15 c/lado</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>Sin peso, solo 1 pierna. Contrae arriba 3 seg.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">6. Buenos Días (sin peso)</td>
+                    <td class="sets-reps">3 × 20</td>
+                    <td><span class="rpe-badge">RPE 8</span></td>
+                    <td>Manos detrás cabeza. Inclinación adelante. Isquios.</td>
+                </tr>
+                <tr>
+                    <td class="exercise-name">7. Pantorrillas 1 Pierna</td>
+                    <td class="sets-reps">4 × 25 c/lado</td>
+                    <td><span class="rpe-badge">RPE 9</span></td>
+                    <td>En escalón. Rango completo.</td>
+                </tr>
+                <tr class="priority-exercise">
+                    <td class="exercise-name">8. Pike Push-ups ⭐</td>
+                    <td class="sets-reps">3 × MAX</td>
+                    <td><span class="rpe-badge">RPE 9-10</span></td>
+                    <td>Última sesión de hombros de la semana.</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- RESUMEN SEMANAL CASA -->
+        <div class="tip" style="margin-top: 30px;">
+            <h3 style="color: var(--success); margin-top: 0;">📅 Tu Semana en Casa (22 Dic - 5 Ene)</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;"><strong>Lunes</strong></td>
+                    <td style="padding: 8px;">PUSH (Pecho, Hombros, Tríceps)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;"><strong>Martes</strong></td>
+                    <td style="padding: 8px;">PULL (Espalda, Bíceps)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;"><strong>Miércoles</strong></td>
+                    <td style="padding: 8px;">LEGS (Piernas Completas)</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;"><strong>Jueves</strong></td>
+                    <td style="padding: 8px;">FULL UPPER + Laterales</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;"><strong>Viernes</strong></td>
+                    <td style="padding: 8px;">LEGS B + Hombros</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #333;">
+                    <td style="padding: 8px;"><strong>Sábado</strong></td>
+                    <td style="padding: 8px;">Descanso (Vacuum + Kegels + Caminar)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px;"><strong>Domingo</strong></td>
+                    <td style="padding: 8px;">Descanso (Batch Cooking)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- CONSEJOS CASA -->
+        <div class="note" style="margin-top: 20px;">
+            <h3 style="color: var(--warning); margin-top: 0;">💡 Tips para NO Perder Ganancias en Casa</h3>
+            <ul>
+                <li><strong>Aumenta las reps:</strong> Si en gym hacías 10 reps, en casa haz 15-20</li>
+                <li><strong>Reduce el descanso:</strong> 45-60 seg mantiene la intensidad alta</li>
+                <li><strong>Tempo lento:</strong> 3-1-2 (3 seg bajando, 1 pausa, 2 subiendo)</li>
+                <li><strong>Superseries:</strong> Combina 2 ejercicios sin descanso</li>
+                <li><strong>No saltes comidas:</strong> Sigue comiendo tus 3000 kcal</li>
+                <li><strong>Duerme bien:</strong> 7-9 horas. El músculo crece durmiendo.</li>
+            </ul>
+        </div>
+
+        <div class="warning" style="margin-top: 20px;">
+            <h3 style="color: var(--danger); margin-top: 0;">⚠️ IMPORTANTE</h3>
+            <p>2 semanas de entrenamiento en casa <strong>NO te harán perder músculo</strong> si:</p>
+            <ul>
+                <li>✅ Entrenas con intensidad (RPE 8-9)</li>
+                <li>✅ Comes suficiente proteína (1.8g/kg)</li>
+                <li>✅ Duermes 7-9 horas</li>
+                <li>✅ Mantienes el volumen semanal similar</li>
+            </ul>
+            <p>¡Cuando vuelvas al gym, estarás igual o incluso más fuerte!</p>
+        </div>
     </div>
 
 </body>
